@@ -1,0 +1,6 @@
+framework module Pods_PlayKitVR_Tests {
+  umbrella header "Pods-PlayKitVR_Tests-umbrella.h"
+
+  export *
+  module * { export * }
+}

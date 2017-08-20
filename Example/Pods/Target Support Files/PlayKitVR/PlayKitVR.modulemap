@@ -1,0 +1,6 @@
+framework module PlayKitVR {
+  umbrella header "PlayKitVR-umbrella.h"
+
+  export *
+  module * { export * }
+}

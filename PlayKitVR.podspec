@@ -9,6 +9,10 @@ Pod::Spec.new do |s|
   s.source           = { :git => 'https://github.com/kaltura/playkit-ios-vr.git', :tag => s.version.to_s }
   s.ios.deployment_target = '9.0'
   s.source_files = 'Sources/**/*'
-  s.dependency 'NYT360Video', '1.1.0'
+  s.dependency 'MetalScope', '0.16.0'
   s.dependency 'PlayKit/Core'
+  # if it's not a dependency - YouboraPlugin won't work
+  s.dependency 'PlayKit/YouboraPlugin'
 end
+
+# To add playkit VR as dependecy use: s.dependency 'PlayKitVR', 'version_number'

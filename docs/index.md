@@ -32,13 +32,9 @@ VR view allows you to embed 360 degree VR media into mobile, and native apps on 
 - HLS
 - MP4
 
-## Player Events and States
-
-- http://cocoadocs.org/docsets/PlayKit/3.2.1/Classes/PlayerEvent.html
-
 ## Known Limitations
 
-- `Metal` is not supported in the iOS Simulator, please run your application with PlayKitVR on real device.
+- [`Metal`](https://developer.apple.com/documentation/metal) is not supported in the iOS Simulator, please run your application on real device.
 
 ### Simple Flow
 

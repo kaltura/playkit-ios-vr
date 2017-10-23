@@ -1,11 +1,16 @@
 ---
-title: Download-to-Go for iOS
+title: PlayKit-VR for iOS
 ---
 
 # PlayKit VR for iOS
 
+{:.no_toc}
+
 PlayKit VR is an iOS library that used for monoscopic 360 video playback & VR.
 VR view allows you to embed 360 degree VR media into mobile, and native apps on iOS. This technology is designed to enable developers of traditional apps to enhance the apps with immersive content.
+
+* TOC
+{:toc}
 
 ## Supported Features 
 

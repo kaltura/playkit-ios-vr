@@ -3,6 +3,21 @@ VR framework for iOS.
 
 Used for monoscopic 360 video playback & VR.
 
+| Features
+|---------
+| Monoscopic 360 video playback (Panorama View).
+| Split screen option for VR (Stereo View).
+| Built on top of SceneKit + Metal
+| Distorted stereo view for Cardboard
+| Smooth touch rotation and re-centering
+| Custom SCNScene presentation
+| Written in Swift 3
+
+
+Monoscopic 360             |  Stereo View
+:-------------------------:|:-------------------------:
+<img src="Resources/panorama-preview.gif" width="200" height="300">  |  <img src="Resources/StereoView.png" width="300" height="200">
+
 ## Documentation
 Please see our [documentation](https://kaltura.github.io/playkit-ios-vr/) for usage and info.
 

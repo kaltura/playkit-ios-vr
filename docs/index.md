@@ -70,7 +70,7 @@ pod 'PlayKitVR'
 
 The following classes/interfaces are the public API of the library:
 
-* `PlayerDelegate` - Impliment `shouldAddPlayerViewController` to get 360&VR UIViewController.
+* `PlayerDelegate` - Implement `shouldAddPlayerViewController` to get 360&VR UIViewController.
 * `PKVRController` - Use this class to interact with the library.
 
 ### Basic Implementation:

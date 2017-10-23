@@ -14,16 +14,19 @@ VR view allows you to embed 360 degree VR media into mobile, and native apps on 
 
 ## Supported Features 
 
-- Monoscopic 360 video playback (Panorama View).
-- Split screen option for VR (Stereo View).
-
 | Features
 |---------
+| Monoscopic 360 video playback (Panorama View).
+| Split screen option for VR (Stereo View).
 | Built on top of SceneKit + Metal
 | Distorted stereo view for Cardboard
 | Smooth touch rotation and re-centering
 | Custom SCNScene presentation
 | Written in Swift 3
+
+
+![](Resources/panorama-preview.gif)
+![](Resources/StereoView.png)
 
 ## Supported Platforms
 
@@ -40,14 +43,11 @@ VR view allows you to embed 360 degree VR media into mobile, and native apps on 
 ## Known Limitations
 
 - [`Metal`](https://developer.apple.com/documentation/metal) is not supported in the iOS Simulator, please run your application on real device.
-
-### Simple Flow
-
-![](Resources/basicFlow.png)
+- VR mode is supported only when rotating the device to left.
 
 ## Installation
 
-### [CocoaPods][cocoapods]
+### [CocoaPods](https://cocoapods.org/)
 
 Add this to your podfile:
 ```ruby
@@ -56,6 +56,87 @@ pod 'PlayKitVR'
 
 ## Overview
 
-TBD
+### Simple Flow
 
-[cocoapods]: https://cocoapods.org/
+![](Resources/basicFlow.png)
+
+>Note: 
+* If `Player Delegation` or `360 UIVIewController Attachment` section is missed, you won't get Player instance for 360 content.
+* Our advise is to `getController` whenever you have to use PKVRController API, don't hold a reference to this controller.
+
+## Usage
+
+### General API Notes:
+
+The following classes/interfaces are the public API of the library:
+
+* `PlayerDelegate` - Impliment `shouldAddPlayerViewController` to get 360&VR UIViewController.
+* `PKVRController` - Use this class to interact with the library.
+
+### Basic Implementation:
+
+```swift
+
+override func viewDidLoad() {
+        super.viewDidLoad()
+        self.playheadSlider.isContinuous = false;
+        
+        // 1. Load the player
+        do {
+            self.player = try PlayKitManager.shared.loadPlayer(pluginConfig: nil)
+            // 2. Set delegate
+            self.player?.delegate = self
+
+            // 3. Prepare the player (can be called at a later stage, preparing starts buffering the video)
+            self.preparePlayer()
+        } catch let e {
+            // error loading the player
+            print("error:", e.localizedDescription)
+        }
+    }
+    
+/************************/
+// MARK: - Player Setup
+/***********************/
+    func preparePlayer() {
+        // setup the player's view
+        self.player?.view = self.playerContainer
+        
+        let serverURL = "http://cdnapi.kaltura.com"
+        let partnerId = 1424501
+        
+        let sessionProvider = SimpleOVPSessionProvider(serverURL:serverURL, partnerId: Int64(partnerId), ks: nil)
+        let mediaProvider: OVPMediaProvider = OVPMediaProvider(sessionProvider)
+        mediaProvider.entryId = "0_a54foq3g"
+        mediaProvider.loadMedia { (mediaEntry, error) in
+            if(!(error != nil)) {
+                // create media config
+                let mediaConfig = MediaConfig(mediaEntry: mediaEntry!)
+                self.player!.prepare(mediaConfig)
+            }
+        }
+    }
+    
+ /************************/
+// MARK: - VR
+/***********************/
+    
+    // 4. Implement delegate method: shouldAddPlayerViewController
+    func shouldAddPlayerViewController(_ vc: UIViewController) {
+        self.addChildViewController(vc)
+        self.playerContainer.addSubview(vc.view)
+        vc.didMove(toParentViewController: self)
+        UIApplication.shared.keyWindow!.addSubview(self.vrBtn)
+    }
+    
+    @IBAction func setVRMode(_ sender: Any) {
+        // 5. Get PKVRController
+        let vrController = self.player?.getController(ofType:  PKVRController.self)
+        // 6. Use PKVRController API
+        vrController?.setVRModeEnabled(true)
+    }
+```
+
+### VR Basic Sample
+
+https://github.com/kaltura/playkit-ios-samples/tree/master/VRSample

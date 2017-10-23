@@ -27,7 +27,7 @@ VR view allows you to embed 360 degree VR media into mobile, and native apps on 
 
 Monoscopic 360             |  Stereo View
 :-------------------------:|:-------------------------:
-![](Resources/panorama-preview.gif)  |  ![](Resources/StereoView.png)
+<img src="Resources/panorama-preview.gif" width="200" height="300">  |  <img src="Resources/StereoView.png" width="300" height="200">
 
 
 ## Supported Platforms

@@ -79,7 +79,6 @@ The following classes/interfaces are the public API of the library:
 
 override func viewDidLoad() {
         super.viewDidLoad()
-        self.playheadSlider.isContinuous = false;
         
         // 1. Load the player
         do {

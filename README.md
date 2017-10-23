@@ -16,7 +16,7 @@ Used for monoscopic 360 video playback & VR.
 
 Monoscopic 360             |  Stereo View
 :-------------------------:|:-------------------------:
-<img src="Resources/panorama-preview.gif" width="200" height="300">  |  <img src="Resources/StereoView.png" width="300" height="200">
+<img src="docs/Resources/panorama-preview.gif" width="200" height="300">  |  <img src="docs/Resources/StereoView.png" width="300" height="200">
 
 ## Documentation
 Please see our [documentation](https://kaltura.github.io/playkit-ios-vr/) for usage and info.

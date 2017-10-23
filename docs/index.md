@@ -7,18 +7,17 @@ title: Download-to-Go for iOS
 PlayKit VR is an iOS library that used for monoscopic 360 video playback & VR.
 VR view allows you to embed 360 degree VR media into mobile, and native apps on iOS. This technology is designed to enable developers of traditional apps to enhance the apps with immersive content.
 
-| Features
+## Supported Features 
+- Monoscopic 360 video playback (Panorama View).
+- Split screen option for VR (Stereo View).
+
+|
 |---------
 | Built on top of SceneKit + Metal
 | Distorted stereo view for Cardboard
 | Smooth touch rotation and re-centering
 | Custom SCNScene presentation
 | Written in Swift 3
-
-
-## Supported Features 
-- Monoscopic 360 video playback.
-- Split the screen option for VR.
 
 ## Supported Platforms
 

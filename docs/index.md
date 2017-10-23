@@ -45,7 +45,6 @@ Monoscopic 360             |  Stereo View
 ## Known Limitations
 
 - [`Metal`](https://developer.apple.com/documentation/metal) is not supported in the iOS Simulator, please run your application on real device.
-- VR mode is supported only when rotating the device to left.
 
 ## Installation
 
@@ -64,7 +63,6 @@ pod 'PlayKitVR'
 
 >Note: 
 * If `Player Delegation` or `360 UIVIewController Attachment` section is missed, you won't get Player instance for 360 content.
-* Our advise is to `getController` whenever you have to use PKVRController API, don't hold a reference to this controller.
 
 ## Usage
 

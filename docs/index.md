@@ -40,6 +40,10 @@ VR view allows you to embed 360 degree VR media into mobile, and native apps on 
 
 - `Metal` is not supported in the iOS Simulator, please run your application with PlayKitVR on real device.
 
+### Simple Flow
+
+![](Resources/basicFlow.png)
+
 ## Installation
 
 ### [CocoaPods][cocoapods]

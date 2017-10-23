@@ -25,8 +25,10 @@ VR view allows you to embed 360 degree VR media into mobile, and native apps on 
 | Written in Swift 3
 
 
-![](Resources/panorama-preview.gif)
-![](Resources/StereoView.png)
+Monoscopic 360             |  Stereo View
+:-------------------------:|:-------------------------:
+![](Resources/panorama-preview.gif)  |  ![](Resources/StereoView.png)
+
 
 ## Supported Platforms
 

@@ -47,7 +47,7 @@ VR view allows you to embed 360 degree VR media into mobile, and native apps on 
 
 ## Installation
 
-### [CocoaPods][https://cocoapods.org/]
+### [CocoaPods](https://cocoapods.org/)
 
 Add this to your podfile:
 ```ruby

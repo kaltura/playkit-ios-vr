@@ -17,6 +17,7 @@ VR view allows you to embed 360 degree VR media into mobile, and native apps on 
 - Monoscopic 360 video playback (Panorama View).
 - Split screen option for VR (Stereo View).
 
+
 | Features
 |---------
 | Built on top of SceneKit + Metal
@@ -24,6 +25,7 @@ VR view allows you to embed 360 degree VR media into mobile, and native apps on 
 | Smooth touch rotation and re-centering
 | Custom SCNScene presentation
 | Written in Swift 3
+
 
 ## Supported Platforms
 
@@ -40,10 +42,15 @@ VR view allows you to embed 360 degree VR media into mobile, and native apps on 
 ## Known Limitations
 
 - [`Metal`](https://developer.apple.com/documentation/metal) is not supported in the iOS Simulator, please run your application on real device.
+- VR mode is supported only when rotating the device to left.
 
-### Simple Flow
+## Simple Flow
 
 ![](Resources/basicFlow.png)
+
+>Note: 
+* If `Player Delegation` or `360 UIVIewController Attachment` section is missed, you won't get Player instance for 360 content.
+* Our advise is to `getController` whenever you have to use PKVRController API, don't hold a reference to this controller.
 
 ## Installation
 

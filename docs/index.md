@@ -69,7 +69,6 @@ pod 'PlayKitVR'
 
 The following classes/interfaces are the public API of the library:
 
-* `PlayerDelegate` - Implement `shouldAddPlayerViewController` to get the 360&VR UIViewController.
 * `PKVRController` - Use this class to interact with the library.
 
 ### Basic Implementation  
@@ -82,10 +81,8 @@ override func viewDidLoad() {
         // 1. Load the player
         do {
             self.player = try PlayKitManager.shared.loadPlayer(pluginConfig: nil)
-            // 2. Set delegate
-            self.player?.delegate = self
-
-            // 3. Prepare the player (can be called at a later stage, preparing starts buffering the video)
+            
+            // 2. Prepare the player (can be called at a later stage, preparing starts buffering the video)
             self.preparePlayer()
         } catch let e {
             // error loading the player
@@ -119,18 +116,10 @@ override func viewDidLoad() {
 // MARK: - VR
 /***********************/
     
-    // 4. Implement delegate method: shouldAddPlayerViewController
-    func shouldAddPlayerViewController(_ vc: UIViewController) {
-        self.addChildViewController(vc)
-        self.playerContainer.addSubview(vc.view)
-        vc.didMove(toParentViewController: self)
-        UIApplication.shared.keyWindow!.addSubview(self.vrBtn)
-    }
-    
     @IBAction func setVRMode(_ sender: Any) {
-        // 5. Get PKVRController
+        // 3. Get PKVRController
         let vrController = self.player?.getController(ofType:  PKVRController.self)
-        // 6. Use PKVRController API
+        // 4. Use PKVRController API
         vrController?.setVRModeEnabled(true)
     }
 ```

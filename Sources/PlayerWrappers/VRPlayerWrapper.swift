@@ -20,10 +20,8 @@ class VRPlayerWrapper: AVPlayerWrapper, VRPlayerEngine {
     // MARK: - Properties
     /************************************************************/
     
-    weak var viewController: VRViewController?
     weak var panoramaView: PanoramaView?
     weak var stereoView: StereoView?
-    var playerDelegate: PlayerDelegate
     var currentViewState: ViewState = ViewState.unknown {
         didSet {
             PKLog.info("currentViewState was updated to: \(currentViewState) from: \(oldValue)")
@@ -38,22 +36,12 @@ class VRPlayerWrapper: AVPlayerWrapper, VRPlayerEngine {
         
         return device
     }()
-
+    
     /************************************************************/
     // MARK: - Initialization
     /************************************************************/
-    
-    required init(delegate: PlayerDelegate) {
-        self.playerDelegate = delegate
+    required override init() {
         super.init()
-        // Create a VRViewController
-        // This VC will contain panorama or stereo view
-        // Since self.viewController is weak
-        // Using let vc till self.panoramaView attached to view hierarchy.
-        let vc = VRViewController()
-        self.viewController = vc
-        // Panorama View Load & Creation
-        self.preparePanoramaView()
     }
     
     /************************************************************/
@@ -73,9 +61,8 @@ class VRPlayerWrapper: AVPlayerWrapper, VRPlayerEngine {
         // Using let panoramaView till self.panoramaView attached to view hierarchy.
         let panoramaView: PanoramaView
         
-        guard let vc = self.viewController else {
-            PKLog.error("VRViewController is nil.")
-            
+        guard let playerView = view else {
+            PKLog.error("Player view is nil.")
             return
         }
         
@@ -83,10 +70,10 @@ class VRPlayerWrapper: AVPlayerWrapper, VRPlayerEngine {
         // PanoramaView can display photos, but cannot display videos on simulator.
         #if arch(arm) || arch(arm64)
             PKLog.debug("PanoramaView creation on device")
-            panoramaView = PanoramaView(frame: vc.view.bounds, device: device)
+            panoramaView = PanoramaView(frame: playerView.bounds, device: device)
         #else
             PKLog.debug("PanoramaView creation on simulator")
-            panoramaView = PanoramaView(frame: vc.view.bounds)
+            panoramaView = PanoramaView(frame: playerView.bounds)
         #endif
         
         // Resets rotation, rotates the point of view by device motions and user's pan gesture.
@@ -95,16 +82,16 @@ class VRPlayerWrapper: AVPlayerWrapper, VRPlayerEngine {
         // Panorama View Attachment on VRViewController.
         panoramaView.translatesAutoresizingMaskIntoConstraints = false
         
-        vc.view.addSubview(panoramaView)
+        view?.addSubview(panoramaView)
         // Update currentViewState to poanorama
         self.currentViewState = ViewState.panorama
         
         // Fill parent view
         let constraints: [NSLayoutConstraint] = [
-            panoramaView.topAnchor.constraint(equalTo: vc.view.topAnchor),
-            panoramaView.bottomAnchor.constraint(equalTo: vc.view.bottomAnchor),
-            panoramaView.leadingAnchor.constraint(equalTo: vc.view.leadingAnchor),
-            panoramaView.trailingAnchor.constraint(equalTo: vc.view.trailingAnchor)
+            panoramaView.topAnchor.constraint(equalTo: playerView.topAnchor),
+            panoramaView.bottomAnchor.constraint(equalTo: playerView.bottomAnchor),
+            panoramaView.leadingAnchor.constraint(equalTo: playerView.leadingAnchor),
+            panoramaView.trailingAnchor.constraint(equalTo: playerView.trailingAnchor)
         ]
         
         NSLayoutConstraint.activate(constraints)
@@ -123,14 +110,6 @@ class VRPlayerWrapper: AVPlayerWrapper, VRPlayerEngine {
             }
             
             panorama.load(self.currentPlayer, format: .mono)
-            
-            guard let vc = self.viewController else {
-                PKLog.error("VRViewController is nil.")
-                
-                return
-            }
-            
-            self.playerDelegate.shouldAddPlayerViewController?(vc)
         #else
             fatalError("PlayKit can't play 360 video on simulator, please move to device.")
         #endif
@@ -141,9 +120,8 @@ class VRPlayerWrapper: AVPlayerWrapper, VRPlayerEngine {
         // Using let stereoView till self.stereoView attached to view hierarchy.
         let stereoView: StereoView
         
-        guard let vc = self.viewController else {
-            PKLog.error("VRViewController is nil.")
-            
+        guard let playerView = view else {
+            PKLog.error("Player view is nil.")
             return
         }
         
@@ -163,16 +141,16 @@ class VRPlayerWrapper: AVPlayerWrapper, VRPlayerEngine {
         // Panorama View Attachment on VRViewController.
         stereoView.translatesAutoresizingMaskIntoConstraints = false
         
-        vc.view.addSubview(stereoView)
+        playerView.addSubview(stereoView)
         // Update currentViewState to poanorama
         self.currentViewState = ViewState.stereo
         
         // Fill parent view
         let constraints: [NSLayoutConstraint] = [
-            stereoView.topAnchor.constraint(equalTo: vc.view.topAnchor),
-            stereoView.bottomAnchor.constraint(equalTo: vc.view.bottomAnchor),
-            stereoView.leadingAnchor.constraint(equalTo: vc.view.leadingAnchor),
-            stereoView.trailingAnchor.constraint(equalTo: vc.view.trailingAnchor)
+            stereoView.topAnchor.constraint(equalTo: playerView.topAnchor),
+            stereoView.bottomAnchor.constraint(equalTo: playerView.bottomAnchor),
+            stereoView.leadingAnchor.constraint(equalTo: playerView.leadingAnchor),
+            stereoView.trailingAnchor.constraint(equalTo: playerView.trailingAnchor)
         ]
         
         NSLayoutConstraint.activate(constraints)
@@ -209,17 +187,15 @@ class VRPlayerWrapper: AVPlayerWrapper, VRPlayerEngine {
     // MARK: - AVPlayerWrapper Methods Override
     /************************************************************/
     
-    // Avoid AVPlayer Layer creation on 360/ VR mode
-    override weak var view: PlayerView? {
-        get { return nil }
-        set {}
+    override func loadMedia(from mediaSource: PKMediaSource?, handlerType: AssetHandler.Type) {
+        super.loadMedia(from: mediaSource, handlerType: handlerType)
+        self.preparePanoramaView()
     }
     
     override func destroy() {
         PKLog.debug("Remove all view from view hierarchy")
         self.panoramaView?.removeFromSuperview()
         self.stereoView?.removeFromSuperview()
-        self.viewController?.removeFromParentViewController()
         super.destroy()
     }
     

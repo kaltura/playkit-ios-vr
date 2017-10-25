@@ -1,18 +1,17 @@
 ---
-title: PlayKit-VR for iOS
+title: PlayKit Virtual Reality (VR) for iOS
 ---
 
 # PlayKit VR for iOS
 
 {:.no_toc}
 
-PlayKit VR is an iOS library that used for monoscopic 360 video playback & VR.
-VR view allows you to embed 360 degree VR media into mobile, and native apps on iOS. This technology is designed to enable developers of traditional apps to enhance the apps with immersive content.
+PlayKit VR is an iOS library that is used for monoscopic 360 video play back and VR. The VR view allows you to embed 360 degree VR media into mobile, and native applications on iOS. This technology is designed to enable developers of traditional applications to enhance their applications with immersive content.
 
 * TOC
 {:toc}
 
-## Supported Features 
+## Supported Features  
 
 | Features
 |---------
@@ -30,50 +29,50 @@ Monoscopic 360             |  Stereo View
 <img src="Resources/panorama-preview.gif" width="200" height="300">  |  <img src="Resources/StereoView.png" width="300" height="200">
 
 
-## Supported Platforms
+## Supported Platforms  
 
 - Xcode 8.2+
 - iOS 9.0+
 - Swift 3.0+
 - Metal (Apple A7+)
 
-## Supported Formats
+## Supported Formats  
 
 - HLS
 - MP4
 
-## Known Limitations
+## Known Limitations  
 
-- [`Metal`](https://developer.apple.com/documentation/metal) is not supported in the iOS Simulator, please run your application on real device.
+- [`Metal`](https://developer.apple.com/documentation/metal) is not supported in the iOS Simulator; please run your application on an actual device.
 
-## Installation
+## Installation  
 
 ### [CocoaPods](https://cocoapods.org/)
 
-Add this to your podfile:
+Add the following  to your podfile:
+
 ```ruby
 pod 'PlayKitVR'
 ```
 
-## Overview
+## Overview  
 
-### Simple Flow
+### Simple Flow  
 
 ![](Resources/basicFlow.png)
 
->Note: 
-* If `Player Delegation` or `360 UIVIewController Attachment` section is missed, you won't get Player instance for 360 content.
+>Note: If the `Player Delegation` or `360 UIVIewController Attachment` sections are missing, you will not get a Player instance for 360 content.
 
-## Usage
+## Usage  
 
-### General API Notes:
+### General API Notes  
 
 The following classes/interfaces are the public API of the library:
 
-* `PlayerDelegate` - Implement `shouldAddPlayerViewController` to get 360&VR UIViewController.
+* `PlayerDelegate` - Implement `shouldAddPlayerViewController` to get the 360&VR UIViewController.
 * `PKVRController` - Use this class to interact with the library.
 
-### Basic Implementation:
+### Basic Implementation  
 
 ```swift
 
@@ -136,6 +135,7 @@ override func viewDidLoad() {
     }
 ```
 
-### VR Basic Sample
+### VR Basic Sample  
 
+The folloiwng is a basic sample of the VR:
 https://github.com/kaltura/playkit-ios-samples/tree/master/VRSample

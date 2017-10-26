@@ -18,7 +18,11 @@ Monoscopic-360             |  Stereoscopic
 :-------------------------:|:-------------------------:
 <img src="docs/Resources/panorama-preview.gif" width="200" height="300">  |  <img src="docs/Resources/StereoView.png" width="300" height="200">
 
-**Based On [MetalScope](https://github.com/ejeinc/MetalScope) SDK**
+> **Based On [MetalScope](https://github.com/ejeinc/MetalScope) SDK**
+
+> We are using a 3rd party library to support 360/VR playback in our iOS SDK.
+> The library is MIT license:
+> https://github.com/ejeinc/MetalScope/https://github.com/ejeinc/MetalScope/blob/master/LICENSE
 
 ## Documentation  
 

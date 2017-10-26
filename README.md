@@ -9,10 +9,8 @@ This is the VR framework for iOS devices.
 | Monoscopic 360 video playback (Panorama View)
 | Split screen option for VR (Stereo View)
 | Built on top of SceneKit + Metal
-| Distorted stereo view for Cardboard
 | Smooth touch rotation and re-centering
 | Custom SCNScene presentation
-| Written in Swift 3
 
 Monoscopic-360             |  Stereoscopic
 :-------------------------:|:-------------------------:

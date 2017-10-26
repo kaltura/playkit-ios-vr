@@ -126,5 +126,4 @@ override func viewDidLoad() {
 
 ### VR Basic Sample  
 
-The folloiwng is a basic sample of the VR:
-https://github.com/kaltura/playkit-ios-samples/tree/master/VRSample
+For a basic PlayKit VR sample [click here](https://github.com/kaltura/playkit-ios-samples/tree/master/VRSample)

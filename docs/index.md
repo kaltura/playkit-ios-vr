@@ -118,7 +118,7 @@ override func viewDidLoad() {
     
     @IBAction func setVRMode(_ sender: Any) {
         // 3. Get PKVRController
-        let vrController = self.player?.getController(ofType:  PKVRController.self)
+        let vrController = self.player?.getController(ofType: PKVRController.self)
         // 4. Use PKVRController API
         vrController?.setVRModeEnabled(true)
     }

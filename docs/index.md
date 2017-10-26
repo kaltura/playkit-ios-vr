@@ -24,9 +24,9 @@ PlayKit VR is an iOS library that is used for monoscopic 360 video play back and
 | Written in Swift 3
 
 
-Monoscopic 360             |  Stereo View
+Monoscopic-360             |  Stereoscopic
 :-------------------------:|:-------------------------:
-<img src="Resources/panorama-preview.gif" width="200" height="300">  |  <img src="Resources/StereoView.png" width="300" height="200">
+<img src="docs/Resources/panorama-preview.gif" width="200" height="300">  |  <img src="docs/Resources/StereoView.png" width="300" height="200">
 
 
 ## Supported Platforms  

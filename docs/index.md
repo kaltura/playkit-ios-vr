@@ -61,8 +61,6 @@ pod 'PlayKitVR'
 
 ![](Resources/basicFlow.png)
 
->Note: If the `Player Delegation` or `360 UIVIewController Attachment` sections are missing, you will not get a Player instance for 360 content.
-
 ## Usage  
 
 ### General API Notes  

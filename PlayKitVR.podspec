@@ -11,8 +11,7 @@ Pod::Spec.new do |s|
   s.source_files = 'Sources/**/*'
   s.dependency 'MetalScope', '0.16.0'
   s.dependency 'PlayKit/Core', '3.3.0'
-  # if it's not a dependency - YouboraPlugin won't work
-  s.dependency 'PlayKit/YouboraPlugin'
+  
 end
 
 # To add playkit VR as dependecy use: s.dependency 'PlayKitVR', 'version_number'

@@ -187,8 +187,8 @@ class VRPlayerWrapper: AVPlayerWrapper, VRPlayerEngine {
     // MARK: - AVPlayerWrapper Methods Override
     /************************************************************/
     
-    override func loadMedia(from mediaSource: PKMediaSource?, handlerType: AssetHandler.Type) {
-        super.loadMedia(from: mediaSource, handlerType: handlerType)
+    override func loadMedia(from mediaSource: PKMediaSource?, handler: AssetHandler) {
+        super.loadMedia(from: mediaSource, handler: handler)
         self.preparePanoramaView()
     }
     

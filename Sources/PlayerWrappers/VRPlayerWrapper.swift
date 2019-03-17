@@ -12,7 +12,6 @@ import Foundation
 import AVFoundation
 import AVKit
 import PlayKit
-import MetalScope
 import SceneKit
 
 class VRPlayerWrapper: AVPlayerWrapper, VRPlayerEngine {

@@ -4,7 +4,7 @@ suffix = '-dev'   # Dev mode
 Pod::Spec.new do |s|
   
   s.name             = 'PlayKitVR'
-  s.version          = '1.0.0' + suffix
+  s.version          = '1.0.3' + suffix
   s.summary          = 'PlayKitVR -- VR framework for iOS'
   s.homepage         = 'https://github.com/kaltura/playkit-ios-vr'
   s.license          = { :type => 'AGPLv3', :file => 'LICENSE' }
@@ -14,7 +14,7 @@ Pod::Spec.new do |s|
 
   s.ios.deployment_target = '9.0'
   s.source_files = 'Sources/**/*'
-  s.dependency 'MetalScope', '0.16.0'
+
   s.dependency 'PlayKit/Core'
   
 end

@@ -12,7 +12,6 @@ import Foundation
 import AVFoundation
 import AVKit
 import PlayKit
-import MetalScope
 import SceneKit
 
 class VRPlayerWrapper: AVPlayerWrapper, VRPlayerEngine {
@@ -24,7 +23,7 @@ class VRPlayerWrapper: AVPlayerWrapper, VRPlayerEngine {
     weak var stereoView: StereoView?
     var currentViewState: ViewState = ViewState.unknown {
         didSet {
-            PKLog.info("currentViewState was updated to: \(currentViewState) from: \(oldValue)")
+            PKLog.info("ViewState was updated to: \(currentViewState) from: \(oldValue)")
         }
     }
     var orientationIndicator: OrientationIndicatorView?
@@ -76,13 +75,10 @@ class VRPlayerWrapper: AVPlayerWrapper, VRPlayerEngine {
             panoramaView = PanoramaView(frame: playerView.bounds)
         #endif
         
-        // Resets rotation, rotates the point of view by device motions and user's pan gesture.
-        panoramaView.setNeedsResetRotation()
-        
         // Panorama View Attachment on VRViewController.
         panoramaView.translatesAutoresizingMaskIntoConstraints = false
         
-        view?.addSubview(panoramaView)
+        playerView.addSubview(panoramaView)
         // Update currentViewState to poanorama
         self.currentViewState = ViewState.panorama
         
@@ -135,13 +131,11 @@ class VRPlayerWrapper: AVPlayerWrapper, VRPlayerEngine {
             stereoView = StereoView()
         #endif
         
-        // Resets rotation, rotates the point of view by device motions and user's pan gesture.
-        stereoView.setNeedsResetRotation()
-        
         // Panorama View Attachment on VRViewController.
         stereoView.translatesAutoresizingMaskIntoConstraints = false
         
         playerView.addSubview(stereoView)
+
         // Update currentViewState to poanorama
         self.currentViewState = ViewState.stereo
         
@@ -166,8 +160,6 @@ class VRPlayerWrapper: AVPlayerWrapper, VRPlayerEngine {
         self.panoramaView?.scene = self.stereoView?.scene
         // Reset SCNScene on StereoView
         self.stereoView?.scene = nil
-        // Update current ViewState
-        self.currentViewState = ViewState.panorama
     }
 
     private func presentStereoView() {
@@ -179,8 +171,6 @@ class VRPlayerWrapper: AVPlayerWrapper, VRPlayerEngine {
         self.stereoView?.scene = self.panoramaView?.scene
         // Reset SCNScene on PanoramaView
         self.panoramaView?.scene = nil
-        // Update current ViewState
-        self.currentViewState = ViewState.stereo
     }
     
     /************************************************************/

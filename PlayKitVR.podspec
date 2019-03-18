@@ -4,7 +4,7 @@ suffix = '-dev'   # Dev mode
 Pod::Spec.new do |s|
   
   s.name             = 'PlayKitVR'
-  s.version          = '1.0.3' + suffix
+  s.version          = '1.1.0' + suffix
   s.summary          = 'PlayKitVR -- VR framework for iOS'
   s.homepage         = 'https://github.com/kaltura/playkit-ios-vr'
   s.license          = { :type => 'AGPLv3', :file => 'LICENSE' }

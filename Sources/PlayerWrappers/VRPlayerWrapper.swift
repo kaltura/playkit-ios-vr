@@ -232,8 +232,9 @@ extension VRPlayerWrapper: SCNSceneRendererDelegate {
     func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
         // please make sure to update the indicator on main thread
         DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
             PKLog.debug("updateOrientation")
-            self?.orientationIndicator?.updateOrientation()
+            self.orientationIndicator?.updateOrientation()
         }
     }
 }

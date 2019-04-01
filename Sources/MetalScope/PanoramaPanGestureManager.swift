@@ -25,8 +25,9 @@ final class PanoramaPanGestureManager {
         let recognizer = AdvancedPanGestureRecognizer()
         recognizer.addTarget(self, action: #selector(handlePanGesture(_:)))
         recognizer.earlyTouchEventHandler = { [weak self] in
-            self?.stopAnimations()
-            self?.resetReferenceAngles()
+            guard let self = self else { return }
+            self.stopAnimations()
+            self.resetReferenceAngles()
         }
         return recognizer
     }()

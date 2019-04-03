@@ -55,7 +55,8 @@ public final class MonoSphericalVideoScene: MonoSphericalMediaScene, VideoScene 
 
     private lazy var renderLoop: RenderLoop = {
         return RenderLoop { [weak self] time in
-            self?.renderVideo(atTime: time)
+            guard let self = self else { return }
+            self.renderVideo(atTime: time)
         }
     }()
 
@@ -150,7 +151,8 @@ public final class StereoSphericalVideoScene: StereoSphericalMediaScene, VideoSc
 
     private lazy var renderLoop: RenderLoop = {
         return RenderLoop { [weak self] time in
-            self?.renderVideo(atTime: time)
+            guard let self = self else { return }
+            self.renderVideo(atTime: time)
         }
     }()
 

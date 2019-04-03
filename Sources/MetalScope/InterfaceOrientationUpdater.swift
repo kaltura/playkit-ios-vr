@@ -54,10 +54,11 @@ internal final class InterfaceOrientationUpdater {
         UIDevice.current.beginGeneratingDeviceOrientationNotifications()
 
         let observer = NotificationCenter.default.addObserver(forName: UIDevice.orientationDidChangeNotification, object: nil, queue: .main) { [weak self] _ in
-            guard UIDevice.current.orientation.isValidInterfaceOrientation, self?.isTransitioning == false else {
+            guard let self = self else { return }
+            guard UIDevice.current.orientation.isValidInterfaceOrientation, self.isTransitioning == false else {
                 return
             }
-            self?.updateInterfaceOrientation()
+            self.updateInterfaceOrientation()
         }
 
         deviceOrientationDidChangeNotificationObserver = observer

@@ -45,7 +45,8 @@ public final class RenderLoop {
             time = sender.timestamp + sender.duration
         }
         queue.async { [weak self] in
-            self?.action(time)
+            guard let self = self else { return }
+            self.action(time)
         }
     }
 }

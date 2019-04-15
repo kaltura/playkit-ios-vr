@@ -90,6 +90,8 @@ private extension UIView.AnimationCurve {
             name = CAMediaTimingFunctionName.easeInEaseOut.rawValue
         case .linear:
             name = CAMediaTimingFunctionName.linear.rawValue
+        @unknown default:
+            name = CAMediaTimingFunctionName.default.rawValue
         }
         
         return CAMediaTimingFunction(name: CAMediaTimingFunctionName(rawValue: name))

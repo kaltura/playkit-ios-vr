@@ -78,7 +78,7 @@ private extension StereoScene {
     /// Most of the code in this section was originally ported from Google's Cardboard SDK for Unity
     /// https://github.com/googlevr/gvr-unity-sdk/blob/v0.6/Cardboard/Scripts/CardboardPostRender.cs
 
-    func computeMeshPoints(with parameters: StereoParametersProtocol, width: Int, height: Int) -> (vertices: [SCNVector3], texcoord: [float2]) {
+    func computeMeshPoints(with parameters: StereoParametersProtocol, width: Int, height: Int) -> (vertices: [SCNVector3], texcoord: [SIMD2<Float>]) {
         let viewer = parameters.viewer
         let screen = parameters.screen
 
@@ -88,7 +88,7 @@ private extension StereoScene {
 
         let count = 2 * width * height
         var vertices: [SCNVector3] = Array(repeating: SCNVector3Zero, count: count)
-        var texcoord: [float2] = Array(repeating: float2(), count: count)
+        var texcoord: [SIMD2<Float>] = Array(repeating: SIMD2(), count: count)
         var vid = 0
 
         func lerp(_ a: Float, _ b: Float, _ t: Float) -> Float {
@@ -123,7 +123,7 @@ private extension StereoScene {
                     s = (s + Float(e)) / 2
                     t = 1 - t // flip vertically
 
-                    texcoord[vid] = float2(s, t)
+                    texcoord[vid] = SIMD2(s, t)
                 }
             }
 
@@ -199,16 +199,16 @@ private extension StereoScene {
 }
 
 private extension SCNGeometrySource {
-    convenience init(texcoord vectors: [float2]) {
+    convenience init(texcoord vectors: [SIMD2<Float>]) {
         self.init(
-            data: Data(bytes: vectors, count: vectors.count * MemoryLayout<float2>.size),
+            data: Data(bytes: vectors, count: vectors.count * MemoryLayout<SIMD2<Float>>.size),
             semantic: .texcoord,
             vectorCount: vectors.count,
             usesFloatComponents: true,
             componentsPerVector: 2,
             bytesPerComponent: MemoryLayout<Float>.size,
             dataOffset: 0,
-            dataStride: MemoryLayout<float2>.size
+            dataStride: MemoryLayout<SIMD2<Float>>.size
         )
     }
 

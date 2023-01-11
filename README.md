@@ -30,7 +30,10 @@ Monoscopic-360             |  Stereoscopic
 
 ## Documentation  
 
-Please see our [documentation](https://kaltura.github.io/playkit-ios-vr/) for usage and information.
+[Developer Guide](https://github.com/kaltura/playkit-ios-vr/blob/develop/docs/index.md)
+
+[Sample](https://github.com/kaltura/playkit-ios-samples/tree/develop/VRSample)
+
 
 ## License and Copyright Information  
 

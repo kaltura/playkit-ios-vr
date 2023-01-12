@@ -1,6 +1,6 @@
 
 ![Swift 3.0+](https://img.shields.io/badge/Swift-3.0+-orange.svg)
-[![CI Status](https://api.travis-ci.org/kaltura/playkit-ios-vr.svg?branch=develop)](https://travis-ci.org/kaltura/playkit-ios-vr)
+[![CI Status](https://github.com/kaltura/playkit-ios-vr/actions/workflows/ci.yml/badge.svg)](https://github.com/kaltura/playkit-ios-vr/actions/workflows/ci.yml)
 [![Version](https://img.shields.io/cocoapods/v/PlayKitVR.svg?style=flat)](https://cocoapods.org/pods/PlayKitVR)
 [![License](https://img.shields.io/cocoapods/l/PlayKitVR.svg?style=flat)](https://cocoapods.org/pods/PlayKitVR)
 [![Platform](https://img.shields.io/cocoapods/p/PlayKitVR.svg?style=flat)](https://cocoapods.org/pods/PlayKitVR)
